@@ -1,8 +1,9 @@
 {
   "name": "nextdocs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "基于gulp的markdown文档生成工具",
   "main": "index.js",
+  "bin": {"nextdocs": "index.js"},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
