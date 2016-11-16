@@ -1,5 +1,5 @@
 {
-  "name": "markdocs",
+  "name": "nextdocs",
   "version": "1.0.0",
   "description": "基于gulp的markdown文档生成工具",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huangsy/markdocs.git"
+    "url": "git+https://github.com/huangsy/nextdocs.git"
   },
   "keywords": [
     "gulp",
@@ -18,10 +18,10 @@
   "author": "huangsy1412@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huangsy/markdocs/issues"
+    "url": "https://github.com/huangsy/nextdocs/issues"
   },
-  "homepage": "https://github.com/huangsy/markdocs#readme",
-  "devDependencies": {
+  "homepage": "https://github.com/huangsy/nextdocs#readme",
+  "dependencies": {
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "gulp": "^3.9.1",
