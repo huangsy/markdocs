@@ -9,8 +9,9 @@ var commands = {
     build: require('./commands/build')
 };
 
+var cwd = process.cwd();
 var defaultConfPath = path.resolve(__dirname, 'nd.conf.json');
-var confPath = './nd.conf.json';
+var confPath = path.resolve(cwd, 'nd.conf.json');
 var config = {};
 
 fs.access(confPath, function(err) {

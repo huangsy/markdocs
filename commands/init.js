@@ -7,8 +7,9 @@ var chalk = require('chalk');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 
-var confPath = './nd.conf.json';
-var defaultConfPath = path.resolve(__dirname, 'nd.conf.json');
+var cwd = process.cwd();
+var confPath = path.resolve(cwd, 'nd.conf.json');
+var defaultConfPath = path.resolve(__dirname, '..', 'nd.conf.json');
 
 module.exports = function() {
     fs.access(confPath, function(err) {
@@ -18,7 +19,7 @@ module.exports = function() {
         }
         gutil.log(chalk.blue('开始初始化配置项...'));
         gulp.src(defaultConfPath)
-            .pipe(gulp.dest('.'))
+            .pipe(gulp.dest(cwd))
             .on('end', function() {
                 gutil.log(chalk.green('nd.conf.json 创建成功!'));
             });
