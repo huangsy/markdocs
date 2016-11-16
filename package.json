@@ -23,6 +23,10 @@
   "homepage": "https://github.com/huangsy/markdocs#readme",
   "devDependencies": {
     "chalk": "^1.1.3",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jsdoc-to-markdown": "^1.2.2",
+    "gulp-util": "^3.0.7"
   }
 }
