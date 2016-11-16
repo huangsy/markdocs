@@ -1,32 +1,35 @@
 #!/usr/bin/env node
-var chalk = require('chalk');
 var program = require('commander');
 
 var fs = require('fs');
 var path = require('path');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var concat = require('gulp-concat');
-var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
 var pkg = require('./package.json');
-var pwd = process.env.PWD;
+var commands = {
+    init: require('./commands/init'),
+    build: require('./commands/build')
+};
 
-var srcPath = path.resolve(pwd, 'src', '**', '*.js');
-var template = path.resolve(__dirname, 'templates', 'readme.hbs');
+var defaultConfPath = path.resolve(__dirname, 'nd.conf.json');
+var confPath = './nd.conf.json';
+var config = {};
 
-function build() {
-    gulp.src(srcPath)
-        .pipe(gulpJsdoc2md({ template: fs.readFileSync(template, 'utf8') }))
-        .on('error', function (err) {
-            gutil.log(chalk.red('jsdoc2md failed'), err.message)
-        })
-        .pipe(concat('README.md'))
-        .pipe(gulp.dest('api'))
+fs.access(confPath, function(err) {
+    if (!err) {
+        config = require(confPath);
+    } else {
+        config = require(defaultConfPath);
+    }
+    initCommands();
+});
+
+function initCommands() {
+    program.version(pkg.version);
+
+    for (key in commands) {
+        program
+            .command(key)
+            .action(commands[key].bind(this, config));
+    }
+
+    program.parse(process.argv);
 }
-
-program
-    .version(pkg.version)
-    .command('build')
-    .action(build);
-
-program.parse(process.argv);
