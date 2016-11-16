@@ -19,7 +19,6 @@
 ```
     {
         "src": "./src/**/*.js",
-        "dest": "api",
-        "template": "./templates/readme.hbs"
+        "dest": "api"
     }
 ```
